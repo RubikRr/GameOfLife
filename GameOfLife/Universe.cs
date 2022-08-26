@@ -13,6 +13,7 @@ namespace GameOfLife
     public partial class Universe : Form
     {
         private Graphics graphics;
+        private int currentGeneration;
         private int _resolution;
         private int _density;
         private bool[,] field;
@@ -21,7 +22,7 @@ namespace GameOfLife
         public Universe()
         {
             InitializeComponent();
-            StartPosition= FormStartPosition.CenterScreen;
+            StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void StartGame()
@@ -29,11 +30,12 @@ namespace GameOfLife
             if (timer.Enabled)
                 return;
 
+            currentGeneration = 0;
             resolution.Enabled = false;
             density.Enabled = false;
 
             _resolution = (int)resolution.Value;
-            _density= (int)density.Value;
+            _density = (int)density.Value;
 
             rows = map.Height / _resolution;
             cols = map.Width / _resolution;
@@ -43,7 +45,7 @@ namespace GameOfLife
             {
                 for (int y = 0; y < rows; y++)
                 {
-                    field[x, y] = random.Next(_density)==0 ;
+                    field[x, y] = random.Next(_density) == 0;
                 }
             }
 
@@ -56,7 +58,7 @@ namespace GameOfLife
         private void NextGeneration()
         {
             graphics.Clear(Color.IndianRed);
-            var newField = new bool[cols,rows];
+            var newField = new bool[cols, rows];
             for (int x = 0; x < cols; x++)
             {
                 for (int y = 0; y < rows; y++)
@@ -70,7 +72,7 @@ namespace GameOfLife
                     }
                     else if (isAlive && (neighbours < 2 || neighbours > 3))
                     {
-                        newField[x,y]=false;
+                        newField[x, y] = false;
                     }
                     else
                     {
@@ -79,11 +81,14 @@ namespace GameOfLife
 
                     if (isAlive)
                     {
-                        graphics.FillRectangle(Brushes.Blue,x*_resolution,y*_resolution,_resolution,_resolution);
+                        graphics.FillRectangle(Brushes.Blue, x * _resolution, y * _resolution, _resolution, _resolution);
                     }
                 }
             }
+
+            field = newField;
             map.Refresh();
+            this.Text=$"Generation{++currentGeneration}";
             //Random random = new Random();
             //for (int x = 0; x < cols; x++)
             //{
@@ -94,24 +99,39 @@ namespace GameOfLife
             //}
         }
 
-        private int CountNeighbours(int x,int y)
-        {
-            return 0;
+        private int CountNeighbours(int x, int y)
+        { 
+            int ans = 0;
+            for (int i = -1; i < 2; i++)
+            {
+                for (int j = -1; j < 2; j++)
+                {
+                    int col = (x + i + cols) % cols;
+                    int row = (y + j + rows) % rows; 
+                    bool isSelfChecking = row == y & col == x;
+                    bool isAlive = field[col, row];
+                    if (isAlive && !isSelfChecking)
+                    {
+                        ans++;
+                    }
+                }
+            }
+            return ans;
         }
 
         private void timer_Tick(object sender, EventArgs e)
         {
-           NextGeneration();
+            NextGeneration();
         }
 
         private void start_Click(object sender, EventArgs e)
         {
-           StartGame();
+            StartGame();
         }
 
         private void StopGame()
         {
-            if(!timer.Enabled)
+            if (!timer.Enabled)
                 return;
             timer.Stop();
 
