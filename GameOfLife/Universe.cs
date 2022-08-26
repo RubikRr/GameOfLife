@@ -88,7 +88,7 @@ namespace GameOfLife
 
             field = newField;
             map.Refresh();
-            this.Text=$"Generation{++currentGeneration}";
+            this.Text = $"Generation{++currentGeneration}";
             //Random random = new Random();
             //for (int x = 0; x < cols; x++)
             //{
@@ -100,14 +100,14 @@ namespace GameOfLife
         }
 
         private int CountNeighbours(int x, int y)
-        { 
+        {
             int ans = 0;
             for (int i = -1; i < 2; i++)
             {
                 for (int j = -1; j < 2; j++)
                 {
                     int col = (x + i + cols) % cols;
-                    int row = (y + j + rows) % rows; 
+                    int row = (y + j + rows) % rows;
                     bool isSelfChecking = row == y & col == x;
                     bool isAlive = field[col, row];
                     if (isAlive && !isSelfChecking)
@@ -142,6 +142,34 @@ namespace GameOfLife
         private void stop_Click(object sender, EventArgs e)
         {
             StopGame();
+        }
+
+        private void map_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (!timer.Enabled)
+                return;
+
+
+            if (e.Button == MouseButtons.Left)
+            {
+                var x = e.Location.X / _resolution;
+                var y = e.Location.Y / _resolution;
+
+                if (ValidateMousePosition(x, y))
+                    field[x, y] = true;
+            }
+            if (e.Button == MouseButtons.Right)
+            {
+                var x = e.Location.X / _resolution;
+                var y = e.Location.Y / _resolution;
+                if (ValidateMousePosition(x, y))
+                    field[x, y] = false;
+            }
+        }
+
+        private bool ValidateMousePosition(int x, int y)
+        {
+            return x >= 0 && y >= 0 && x < cols && y < rows;
         }
     }
 }

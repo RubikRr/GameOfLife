@@ -80,6 +80,7 @@
             this.map.Size = new System.Drawing.Size(549, 461);
             this.map.TabIndex = 0;
             this.map.TabStop = false;
+            this.map.MouseMove += new System.Windows.Forms.MouseEventHandler(this.map_MouseMove);
             // 
             // ResolutionLabel
             // 
