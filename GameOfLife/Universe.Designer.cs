@@ -30,21 +30,21 @@
         {
             this.components = new System.ComponentModel.Container();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
-            this.map = new System.Windows.Forms.PictureBox();
-            this.ResolutionLabel = new System.Windows.Forms.Label();
-            this.resolution = new System.Windows.Forms.NumericUpDown();
+            this.stop = new System.Windows.Forms.Button();
+            this.start = new System.Windows.Forms.Button();
             this.density = new System.Windows.Forms.NumericUpDown();
             this.DensityLable = new System.Windows.Forms.Label();
-            this.start = new System.Windows.Forms.Button();
-            this.stop = new System.Windows.Forms.Button();
+            this.resolution = new System.Windows.Forms.NumericUpDown();
+            this.ResolutionLabel = new System.Windows.Forms.Label();
+            this.map = new System.Windows.Forms.PictureBox();
             this.timer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
             this.splitContainer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.map)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.resolution)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.density)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.resolution)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.map)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer
@@ -71,26 +71,58 @@
             this.splitContainer.SplitterDistance = 181;
             this.splitContainer.TabIndex = 0;
             // 
-            // map
+            // stop
             // 
-            this.map.BackColor = System.Drawing.Color.IndianRed;
-            this.map.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.map.Location = new System.Drawing.Point(0, 0);
-            this.map.Name = "map";
-            this.map.Size = new System.Drawing.Size(549, 461);
-            this.map.TabIndex = 0;
-            this.map.TabStop = false;
-            this.map.MouseMove += new System.Windows.Forms.MouseEventHandler(this.map_MouseMove);
+            this.stop.Location = new System.Drawing.Point(91, 175);
+            this.stop.Name = "stop";
+            this.stop.Size = new System.Drawing.Size(64, 34);
+            this.stop.TabIndex = 5;
+            this.stop.Text = "Stop";
+            this.stop.UseVisualStyleBackColor = true;
+            this.stop.Click += new System.EventHandler(this.stop_Click);
             // 
-            // ResolutionLabel
+            // start
             // 
-            this.ResolutionLabel.AutoSize = true;
-            this.ResolutionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ResolutionLabel.Location = new System.Drawing.Point(17, 23);
-            this.ResolutionLabel.Name = "ResolutionLabel";
-            this.ResolutionLabel.Size = new System.Drawing.Size(85, 20);
-            this.ResolutionLabel.TabIndex = 0;
-            this.ResolutionLabel.Text = "Resolution";
+            this.start.Location = new System.Drawing.Point(21, 175);
+            this.start.Name = "start";
+            this.start.Size = new System.Drawing.Size(64, 34);
+            this.start.TabIndex = 4;
+            this.start.Text = "Start";
+            this.start.UseVisualStyleBackColor = true;
+            this.start.Click += new System.EventHandler(this.start_Click);
+            // 
+            // density
+            // 
+            this.density.Location = new System.Drawing.Point(21, 136);
+            this.density.Maximum = new decimal(new int[] {
+            25,
+            0,
+            0,
+            0});
+            this.density.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.density.Name = "density";
+            this.density.Size = new System.Drawing.Size(120, 20);
+            this.density.TabIndex = 3;
+            this.density.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.density.Value = new decimal(new int[] {
+            25,
+            0,
+            0,
+            0});
+            // 
+            // DensityLable
+            // 
+            this.DensityLable.AutoSize = true;
+            this.DensityLable.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.DensityLable.Location = new System.Drawing.Point(17, 92);
+            this.DensityLable.Name = "DensityLable";
+            this.DensityLable.Size = new System.Drawing.Size(62, 20);
+            this.DensityLable.TabIndex = 2;
+            this.DensityLable.Text = "Density";
             // 
             // resolution
             // 
@@ -115,53 +147,26 @@
             0,
             0});
             // 
-            // density
+            // ResolutionLabel
             // 
-            this.density.Location = new System.Drawing.Point(21, 136);
-            this.density.Minimum = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            this.density.Name = "density";
-            this.density.Size = new System.Drawing.Size(120, 20);
-            this.density.TabIndex = 3;
-            this.density.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.density.Value = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
+            this.ResolutionLabel.AutoSize = true;
+            this.ResolutionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ResolutionLabel.Location = new System.Drawing.Point(17, 23);
+            this.ResolutionLabel.Name = "ResolutionLabel";
+            this.ResolutionLabel.Size = new System.Drawing.Size(85, 20);
+            this.ResolutionLabel.TabIndex = 0;
+            this.ResolutionLabel.Text = "Resolution";
             // 
-            // DensityLable
+            // map
             // 
-            this.DensityLable.AutoSize = true;
-            this.DensityLable.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.DensityLable.Location = new System.Drawing.Point(17, 92);
-            this.DensityLable.Name = "DensityLable";
-            this.DensityLable.Size = new System.Drawing.Size(62, 20);
-            this.DensityLable.TabIndex = 2;
-            this.DensityLable.Text = "Density";
-            // 
-            // start
-            // 
-            this.start.Location = new System.Drawing.Point(21, 175);
-            this.start.Name = "start";
-            this.start.Size = new System.Drawing.Size(64, 34);
-            this.start.TabIndex = 4;
-            this.start.Text = "Start";
-            this.start.UseVisualStyleBackColor = true;
-            this.start.Click += new System.EventHandler(this.start_Click);
-            // 
-            // stop
-            // 
-            this.stop.Location = new System.Drawing.Point(91, 175);
-            this.stop.Name = "stop";
-            this.stop.Size = new System.Drawing.Size(64, 34);
-            this.stop.TabIndex = 5;
-            this.stop.Text = "Stop";
-            this.stop.UseVisualStyleBackColor = true;
-            this.stop.Click += new System.EventHandler(this.stop_Click);
+            this.map.BackColor = System.Drawing.Color.IndianRed;
+            this.map.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.map.Location = new System.Drawing.Point(0, 0);
+            this.map.Name = "map";
+            this.map.Size = new System.Drawing.Size(549, 461);
+            this.map.TabIndex = 0;
+            this.map.TabStop = false;
+            this.map.MouseMove += new System.Windows.Forms.MouseEventHandler(this.map_MouseMove);
             // 
             // timer
             // 
@@ -182,9 +187,9 @@
             this.splitContainer.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).EndInit();
             this.splitContainer.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.map)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.resolution)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.density)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.resolution)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.map)).EndInit();
             this.ResumeLayout(false);
 
         }
