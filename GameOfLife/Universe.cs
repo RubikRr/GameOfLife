@@ -56,26 +56,47 @@ namespace GameOfLife
         private void NextGeneration()
         {
             graphics.Clear(Color.IndianRed);
-
+            var newField = new bool[cols,rows];
             for (int x = 0; x < cols; x++)
             {
                 for (int y = 0; y < rows; y++)
                 {
-                    if (field[x, y])
+                    var neighbours = CountNeighbours(x, y);
+                    var isAlive = field[x, y];
+
+                    if (!isAlive && neighbours == 3)
+                    {
+                        newField[x, y] = true;
+                    }
+                    else if (isAlive && (neighbours < 2 || neighbours > 3))
+                    {
+                        newField[x,y]=false;
+                    }
+                    else
+                    {
+                        newField[x, y] = field[x, y];
+                    }
+
+                    if (isAlive)
                     {
                         graphics.FillRectangle(Brushes.Blue,x*_resolution,y*_resolution,_resolution,_resolution);
                     }
                 }
             }
             map.Refresh();
-            Random random = new Random();
-            for (int x = 0; x < cols; x++)
-            {
-                for (int y = 0; y < rows; y++)
-                {
-                    field[x, y] = random.Next(_density) == 0;
-                }
-            }
+            //Random random = new Random();
+            //for (int x = 0; x < cols; x++)
+            //{
+            //    for (int y = 0; y < rows; y++)
+            //    {
+            //        field[x, y] = random.Next(_density) == 0;
+            //    }
+            //}
+        }
+
+        private int CountNeighbours(int x,int y)
+        {
+            return 0;
         }
 
         private void timer_Tick(object sender, EventArgs e)
