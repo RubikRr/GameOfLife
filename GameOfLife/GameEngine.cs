@@ -7,7 +7,7 @@ using System.Xml.Serialization;
 
 namespace GameOfLife
 {
-    internal class GameEngine
+    public class GameEngine
     {
         private bool[,] field;
         private readonly int rows;

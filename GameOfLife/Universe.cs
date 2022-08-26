@@ -15,7 +15,7 @@ namespace GameOfLife
         private Graphics graphics;
         private GameEngine gameEngine;
         private int _resolution;
-        private int _density;
+   
 
         public Universe()
         {
