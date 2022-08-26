@@ -15,6 +15,7 @@ namespace GameOfLife
         public Universe()
         {
             InitializeComponent();
+            StartPosition= FormStartPosition.CenterScreen;
         }
     }
 }
