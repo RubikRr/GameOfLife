@@ -1,0 +1,11 @@
+C:\C#\MyAttempts\GameOfLife\GameOfLife\bin\Debug\GameOfLife.exe.config
+C:\C#\MyAttempts\GameOfLife\GameOfLife\bin\Debug\GameOfLife.exe
+C:\C#\MyAttempts\GameOfLife\GameOfLife\bin\Debug\GameOfLife.pdb
+C:\C#\MyAttempts\GameOfLife\GameOfLife\obj\Debug\GameOfLife.csproj.AssemblyReference.cache
+C:\C#\MyAttempts\GameOfLife\GameOfLife\obj\Debug\GameOfLife.csproj.SuggestedBindingRedirects.cache
+C:\C#\MyAttempts\GameOfLife\GameOfLife\obj\Debug\GameOfLife.Universe.resources
+C:\C#\MyAttempts\GameOfLife\GameOfLife\obj\Debug\GameOfLife.Properties.Resources.resources
+C:\C#\MyAttempts\GameOfLife\GameOfLife\obj\Debug\GameOfLife.csproj.GenerateResource.cache
+C:\C#\MyAttempts\GameOfLife\GameOfLife\obj\Debug\GameOfLife.csproj.CoreCompileInputs.cache
+C:\C#\MyAttempts\GameOfLife\GameOfLife\obj\Debug\GameOfLife.exe
+C:\C#\MyAttempts\GameOfLife\GameOfLife\obj\Debug\GameOfLife.pdb
